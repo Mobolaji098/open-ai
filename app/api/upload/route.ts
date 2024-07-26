@@ -34,14 +34,8 @@ export async function POST(request: Request) {
       fullpage += documents[document].pageContent;
     }
 
-    const vercelUrl =
-      process.env.NEXT_PUBLIC_VERCEL_URL || "http://localhost:3000";
 
-    console.log(vercelUrl);
-
-    // https://bolajibada-gs1t8eict-mobolajis-projects-591f2fcd.vercel.app
-
-    const response = await fetch(`${vercelUrl}/api/retrieval/ingest/`, {
+    const response = await fetch(`https://bolajibada.vercel.app/api/retrieval/ingest/`, {
       method: "POST",
       body: JSON.stringify({
         text: fullpage,
