@@ -32,7 +32,7 @@ export default function Intro() {
                 I have extensive experience with OpenAI integration and
                 LangChain, which I leverage to deliver innovative AI solutions.
                 My skills include: OpenAI Integration: Seamlessly incorporating
-                OpenAI's powerful models into various applications. LangChain:
+                OpenAI&apos;s powerful models into various applications. LangChain:
                 Utilizing LangChain for efficient and effective natural language
                 processing tasks.
               </p>
