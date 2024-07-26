@@ -18,10 +18,12 @@ export const runtime = "edge";
  * https://js.langchain.com/v0.2/docs/integrations/vectorstores/supabase
  */
 export async function POST(req: NextRequest) {
-  
+  console.log('here');
   const body = await req.json();
   const text = body.text;
 
+  console.log(text);
+  
 
   if (process.env.NEXT_PUBLIC_DEMO === "true") {
     return NextResponse.json(
@@ -49,11 +51,9 @@ export async function POST(req: NextRequest) {
 
     const splitDocuments = await splitter.splitDocuments([
       new Document({ pageContent: text }),
-    ]);
-
-    console.log(splitDocuments);
-    
+    ]);    
  
+    
     const vectorstore = await SupabaseVectorStore.fromDocuments(
       splitDocuments,
       new OpenAIEmbeddings(),
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ ok: true }, { status: 200 });
   } catch (e: any) {
-    console.log(e,e.message);
+    console.log(e);
     
     return NextResponse.json({ error: e.message }, { status: 500 });
   }

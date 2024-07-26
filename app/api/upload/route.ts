@@ -36,7 +36,8 @@ export async function POST(request: Request) {
     for (let document in documents){
         fullpage += documents[document].pageContent        
     }
-
+    
+    // https://bolajibada-gs1t8eict-mobolajis-projects-591f2fcd.vercel.app
 
      const response = await fetch(`https://bolajibada-gs1t8eict-mobolajis-projects-591f2fcd.vercel.app/api/retrieval/ingest/`, {
         method: "POST",
@@ -45,11 +46,10 @@ export async function POST(request: Request) {
         }),
       });
 
-    // console.log(response);
+    console.log(response);
     
     return NextResponse.json({ fullpage });
   } catch (error) {
-    console.error(error);
     return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
   }
 }

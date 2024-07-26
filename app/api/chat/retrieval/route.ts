@@ -151,10 +151,7 @@ export async function POST(req: NextRequest) {
       question: currentMessageContent,
       chat_history: formatVercelMessages(previousMessages),
     });
-
-    console.log(stream);
     
-
     const documents = await documentPromise;
     const serializedSources = Buffer.from(
       JSON.stringify(

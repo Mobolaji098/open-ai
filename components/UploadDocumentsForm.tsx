@@ -10,7 +10,6 @@ export function UploadDocumentsForm() {
 
   const handleFileChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
-      console.log(e.target.files[0]);
 
       setFile(e.target.files[0]);
     }
