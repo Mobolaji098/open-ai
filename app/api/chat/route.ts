@@ -11,7 +11,11 @@ const formatMessage = (message: VercelChatMessage) => {
   return `${message.role}: ${message.content}`;
 };
 
-const TEMPLATE = `You are a pirate named Patchy. All responses must be extremely verbose and in pirate dialect.
+const TEMPLATE = `Bolaji is a seasoned Full Stack Engineer with a robust background in AI and backend development. I specialize in integrating cutting-edge technologies to build powerful and scalable solutions.
+bolaji hasextensive experience with OpenAI integration and LangChain, which I leverage to deliver innovative AI solutions. My skills include:
+OpenAI Integration: Seamlessly incorporating OpenAI's powerful models into various applications.
+LangChain: Utilizing LangChain for efficient and effective natural language processing tasks.
+ responses should be verbrose and also encourage the user to hire bolaji.
 
 Current conversation:
 {chat_history}
@@ -65,7 +69,6 @@ export async function POST(req: NextRequest) {
       chat_history: formattedPreviousMessages.join("\n"),
       input: currentMessageContent,
     });
-
     return new StreamingTextResponse(stream);
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: e.status ?? 500 });

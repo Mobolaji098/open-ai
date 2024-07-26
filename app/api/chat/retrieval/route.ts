@@ -45,8 +45,7 @@ const condenseQuestionPrompt = PromptTemplate.fromTemplate(
   CONDENSE_QUESTION_TEMPLATE,
 );
 
-const ANSWER_TEMPLATE = `You are an energetic talking puppy named Dana, and must answer all questions like a happy, talking dog would.
-Use lots of puns!
+const ANSWER_TEMPLATE = `give details information about the text passed in
 
 Answer the question based only on the following context and chat history:
 <context>
@@ -61,6 +60,7 @@ Question: {question}
 `;
 const answerPrompt = PromptTemplate.fromTemplate(ANSWER_TEMPLATE);
 
+
 /**
  * This handler initializes and calls a retrieval chain. It composes the chain using
  * LangChain Expression Language. See the docs for more information:
@@ -73,6 +73,9 @@ export async function POST(req: NextRequest) {
     const messages = body.messages ?? [];
     const previousMessages = messages.slice(0, -1);
     const currentMessageContent = messages[messages.length - 1].content;
+
+    // console.log(previousMessages,currentMessageContent);
+    
 
     const model = new ChatOpenAI({
       model: "gpt-3.5-turbo-0125",
@@ -119,6 +122,7 @@ export async function POST(req: NextRequest) {
       ],
     });
 
+    
     const retrievalChain = retriever.pipe(combineDocumentsFn);
 
     const answerChain = RunnableSequence.from([
@@ -147,6 +151,9 @@ export async function POST(req: NextRequest) {
       question: currentMessageContent,
       chat_history: formatVercelMessages(previousMessages),
     });
+
+    console.log(stream);
+    
 
     const documents = await documentPromise;
     const serializedSources = Buffer.from(

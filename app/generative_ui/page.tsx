@@ -50,29 +50,16 @@ export default function GenerativeUIPage() {
 
   return (
     <div>
-      <div className="p-4 md:p-8 rounded bg-[#25252d] w-full max-h-[85%] overflow-hidden">
+      <div className="p-4 md:p-8 rounded bg-[#25252d] w-full max-h-[85%] overflow-hidden text-white">
         <h1 className="text-3xl md:text-4xl mb-4">
-          ▲ Next.js + LangChain.js Generative UI
+          LangChain.js Generative UI
         </h1>
 
         <ul>
           <li className="hidden text-l md:block">
             🔗
             <span className="ml-2">
-              This template showcases how to render React components right from
-              a{" "}
-              <a href="https://js.langchain.com/" target="_blank">
-                LangChain.js
-              </a>{" "}
-              chain and the Vercel{" "}
-              <a href="https://sdk.vercel.ai/docs" target="_blank">
-                AI SDK
-              </a>{" "}
-              in a{" "}
-              <a href="https://nextjs.org/" target="_blank">
-                Next.js
-              </a>{" "}
-              project.
+              This template showcases how to render Images
             </span>
           </li>
 
@@ -82,11 +69,9 @@ export default function GenerativeUIPage() {
               Try asking e.g.{" "}
               <code
                 className="underline cursor-pointer"
-                onClick={() =>
-                  onSubmit("What are the attractions found in Prague?")
-                }
+                onClick={() => onSubmit("Show image of mapo hall")}
               >
-                What are the attractions found in Prague?
+                Show image of mapo hall
               </code>{" "}
               below!
             </span>
@@ -112,7 +97,7 @@ export default function GenerativeUIPage() {
           <input
             type="text"
             value={input}
-            className="bg-transparent px-3 py-2 border border-gray-600 rounded-md text-white outline-none"
+            className="bg-transparent px-3 py-2 border border-gray-600 rounded-md text-black outline-none"
             onChange={(e) => setInput(e.target.value)}
           />
           <button
