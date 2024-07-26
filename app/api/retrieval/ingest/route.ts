@@ -21,6 +21,7 @@ export async function POST(req: NextRequest) {
   console.log('here');
   const body = await req.json();
   const text = body.text;
+console.log(text);
 
   console.log(text);
   
